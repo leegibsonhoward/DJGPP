@@ -1,0 +1,70 @@
+This is info-stnd.info, produced by makeinfo version 4.0 from
+info-stnd.texi.
+
+INFO-DIR-SECTION Texinfo documentation system
+START-INFO-DIR-ENTRY
+* Standalone info program: (info-stnd).    Standalone Info-reading program.
+END-INFO-DIR-ENTRY
+
+   This file documents GNU Info, a program for viewing the on-line
+formatted versions of Texinfo files.  This documentation is different
+from the documentation for the Info reader that is part of GNU Emacs.
+If you do not know how to use Info, but have a working Info reader, you
+should read that documentation first.
+
+   Copyright (C) 1992, 93, 96, 97, 98, 99 Free Software Foundation, Inc.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided also
+that the sections entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.
+
+
+Indirect:
+info-stnd.i1: 1437
+info-stnd.i2: 48996
+
+Tag Table:
+(Indirect)
+Node: Top1437
+Node: What is Info2829
+Node: Invoking Info3372
+Ref: --show-options8478
+Ref: --vi-keys9790
+Ref: command-line menu items9986
+Ref: Invoking Info-Footnote-111096
+Ref: Invoking Info-Footnote-211144
+Ref: Invoking Info-Footnote-311529
+Node: Cursor Commands11737
+Ref: Cursor Commands-Footnote-114521
+Ref: Cursor Commands-Footnote-214803
+Node: Scrolling Commands14955
+Node: Node Commands20549
+Ref: goto-node24330
+Ref: goto-invocation24905
+Node: Searching Commands28230
+Node: Xref Commands32158
+Node: Parts of an Xref32776
+Node: Selecting Xrefs34745
+Node: Window Commands36926
+Node: The Mode Line37867
+Node: Basic Windows39772
+Node: The Echo Area42290
+Ref: The Echo Area-Footnote-147744
+Node: Printing Nodes47834
+Node: Miscellaneous Commands48996
+Node: Variables53256
+Node: GNU Info Global Index59471
+
+End Tag Table

@@ -1,0 +1,132 @@
+
+
+
+TEXI2DVI(1)                    FSF                    TEXI2DVI(1)
+
+
+NNAAMMEE
+       texi2dvi - print Texinfo documents
+
+SSYYNNOOPPSSIISS
+       tteexxii22ddvvii [_O_P_T_I_O_N]... _F_I_L_E...
+
+DDEESSCCRRIIPPTTIIOONN
+       Run  each  Texinfo or LaTeX FILE through TeX in turn until
+       all cross-references are resolved, building  all  indices.
+       The   directory  containing  each  FILE  is  searched  for
+       included files.  The suffix of FILE is used  to  determine
+       its language (LaTeX or Texinfo).
+
+       Makeinfo is used to perform Texinfo macro expansion before
+       running TeX when needed.
+
+OOPPTTIIOONNSS
+       -@     Use @input instead of \input;  for  preloaded  Tex-
+              info.
+
+       --bb, ----bbaattcchh
+              No interaction.
+
+       --cc, ----cclleeaann
+              Remove all auxiliary files.
+
+       --DD, ----ddeebbuugg
+              Turn on shell debugging (set --xx).
+
+       --ee, ----eexxppaanndd
+              Force macro expansion using makeinfo.
+
+       --II DIR Search DIR for Texinfo files.
+
+       --hh, ----hheellpp
+              Display this help and exit successfully.
+
+       --ll, ----llaanngguuaaggee=_L_A_N_G
+              Specify the LANG of FILE: LaTeX or Texinfo.
+
+       --pp, ----ppddff
+              Use pdftex or pdflatex for processing.
+
+       --qq, ----qquuiieett
+              No output unless errors (implies ----bbaattcchh).
+
+       --ss, ----ssiilleenntt
+              Same as ----qquuiieett.
+
+       --tt, ----tteexxiinnffoo=_C_M_D
+              Insert  CMD  after  @setfilename  in  copy of input
+              file.  Multiple values accumulate.
+
+
+
+
+
+GNU Texinfo 4.0 0.43      September 1999                        1
+
+
+
+
+
+TEXI2DVI(1)                    FSF                    TEXI2DVI(1)
+
+
+       --vv, ----vveerrssiioonn
+              Display version information and exit  successfully.
+
+       --VV, ----vveerrbboossee
+              Report on what is done.
+
+       The  values of the BIBTEX, LATEX (or PDFLATEX), MAKEINDEX,
+       MAKEINFO, TEX (or PDFTEX), and TEXINDEX environment  vari-
+       ables are used to run those commands, if they are set.
+
+RREEPPOORRTTIINNGG BBUUGGSS
+       Email  bug reports to <bug-texinfo@gnu.org>, general ques-
+       tions and discussion to <help-texinfo@gnu.org>.
+
+SSEEEE AALLSSOO
+       The full documentation for tteexxii22ddvvii  is  maintained  as  a
+       Texinfo  manual.   If  the  iinnffoo and tteexxii22ddvvii programs are
+       properly installed at your site, the command
+
+              iinnffoo tteexxii22ddvvii
+
+       should give you access to the complete manual.
+
+CCOOPPYYRRIIGGHHTT
+       Copyright (C) 1999 Free Software Foundation,  Inc.   There
+       is  NO warranty.  You may redistribute this software under
+       the terms of the GNU General  Public  License.   For  more
+       information about these matters, see the files named COPY-
+       ING.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GNU Texinfo 4.0 0.43      September 1999                        2
+
+

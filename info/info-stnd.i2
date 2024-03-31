@@ -1,0 +1,644 @@
+This is info-stnd.info, produced by makeinfo version 4.0 from
+info-stnd.texi.
+
+INFO-DIR-SECTION Texinfo documentation system
+START-INFO-DIR-ENTRY
+* Standalone info program: (info-stnd).    Standalone Info-reading program.
+END-INFO-DIR-ENTRY
+
+   This file documents GNU Info, a program for viewing the on-line
+formatted versions of Texinfo files.  This documentation is different
+from the documentation for the Info reader that is part of GNU Emacs.
+If you do not know how to use Info, but have a working Info reader, you
+should read that documentation first.
+
+   Copyright (C) 1992, 93, 96, 97, 98, 99 Free Software Foundation, Inc.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided also
+that the sections entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.
+
+
+File: info-stnd.info,  Node: Miscellaneous Commands,  Next: Variables,  Prev: Printing Nodes,  Up: Top
+
+Miscellaneous Commands
+**********************
+
+   GNU Info contains several commands which self-document GNU Info:
+
+`M-x describe-command'
+     Read the name of an Info command in the echo area and then display
+     a brief description of what that command does.
+
+`M-x describe-key'
+     Read a key sequence in the echo area, and then display the name and
+     documentation of the Info command that the key sequence invokes.
+
+`M-x describe-variable'
+     Read the name of a variable in the echo area and then display a
+     brief description of what the variable affects.
+
+`M-x where-is'
+     Read the name of an Info command in the echo area, and then display
+     a key sequence which can be typed in order to invoke that command.
+
+<C-h> (`get-help-window')
+<?>
+<F1> (on DOS/Windows only)
+h, vi-like operation
+     Create (or Move into) the window displaying `*Help*', and place a
+     node containing a quick reference card into it.  This window
+     displays the most concise information about GNU Info available.
+
+<h> (`get-info-help-node')
+<M-h>, vi-like operation
+     Try hard to visit the node `(info)Help'.  The Info file
+     `info.texi' distributed with GNU Info contains this node.  Of
+     course, the file must first be processed with `makeinfo', and then
+     placed into the location of your Info directory.
+
+   Here are the commands for creating a numeric argument:
+
+<C-u> (`universal-argument')
+     Start (or multiply by 4) the current numeric argument.  `C-u' is a
+     good way to give a small numeric argument to cursor movement or
+     scrolling commands; `C-u C-v' scrolls the screen 4 lines, while
+     `C-u C-u C-n' moves the cursor down 16 lines.  `C-u' followed by
+     digit keys sets the numeric argument to the number thus typed:
+     `C-u 1 2 0' sets the argument to 120.
+
+<M-1> (`add-digit-to-numeric-arg')
+<1>, vi-like operation
+<M-2> ... <M-9>
+<2> ... <9>, vi-like operation
+<M-0>
+<0>, vi-like operation
+     Add the digit value of the invoking key to the current numeric
+     argument.  Once Info is reading a numeric argument, you may just
+     type the digits of the argument, without the Meta prefix.  For
+     example, you might give `C-l' a numeric argument of 32 by typing:
+
+          C-u 3 2 C-l
+
+     or
+
+          M-3 2 C-l
+
+<M-> (`add-digit-to-numeric-arg'
+<->
+     To make a negative argument, type `-'.  Typing `-' alone makes a
+     negative argument with a value of -1.  If you continue to type
+     digit or Meta-digit keys after `-', the result is a negative
+     number produced by those digits.
+
+     `-' doesn't work when you type in the echo area, because you need
+     to be able to insert the `-' character itself; use `M--' instead,
+     if you need to specify negative arguments in the echo area.
+
+   `C-g' is used to abort the reading of a multi-character key
+sequence, to cancel lengthy operations (such as multi-file searches) and
+to cancel reading input in the echo area.
+
+<C-g> (`abort-key')
+<C-u>, vi-like operation
+     Cancel current operation.
+
+   The `q' command of Info simply quits running Info.  Under
+`--vi-keys' (*note --vi-keys::), you can also exit with `:q' or `ZZ'.
+
+<q> (`quit')
+`C-x C-c'
+`:q', vi-like operation
+`ZZ', vi-like operation
+     Exit GNU Info.
+
+   If the operating system tells GNU Info that the screen is 60 lines
+tall, and it is actually only 40 lines tall, here is a way to tell Info
+that the operating system is correct.
+
+`M-x set-screen-height'
+     Read a height value in the echo area and set the height of the
+     displayed screen to that value.
+
+   On MS-DOS/MS-Windows, this command actually tries to change the
+dimensions of the visible screen to the value you type in the echo area.
+
+   Finally, Info provides a convenient way to display footnotes which
+might be associated with the current node that you are viewing:
+
+<ESC C-f> (`show-footnotes')
+     Show the footnotes (if any) associated with the current node in
+     another window.  You can have Info automatically display the
+     footnotes associated with a node when the node is selected by
+     setting the variable `automatic-footnotes'.  *Note
+     `automatic-footnotes': Variables.
+
+
+File: info-stnd.info,  Node: Variables,  Next: GNU Info Global Index,  Prev: Miscellaneous Commands,  Up: Top
+
+Manipulating Variables
+**********************
+
+   GNU Info contains several "variables" whose values are looked at by
+various Info commands.  You can change the values of these variables,
+and thus change the behavior of Info to more closely match your
+environment and Info file reading manner.
+
+`M-x set-variable'
+     Read the name of a variable, and the value for it, in the echo
+     area and then set the variable to that value.  Completion is
+     available when reading the variable name (*note completion: The
+     Echo Area.); often, completion is available when reading the value
+     to give to the variable, but that depends on the variable itself.
+     If a variable does _not_ supply multiple choices to complete over,
+     it expects a numeric value.
+
+`M-x describe-variable'
+     Read the name of a variable in the echo area and then display a
+     brief description of what the variable affects.
+
+   Here is a list of the variables that you can set in Info.
+
+`automatic-footnotes'
+     When set to `On', footnotes appear and disappear automatically.
+     This variable is `On' by default.  When a node is selected, a
+     window containing the footnotes which appear in that node is
+     created, and the footnotes are displayed within the new window.
+     The window that Info creates to contain the footnotes is called
+     `*Footnotes*'.  If a node is selected which contains no footnotes,
+     and a `*Footnotes*' window is on the screen, the `*Footnotes*'
+     window is deleted.  Footnote windows created in this fashion are
+     not automatically tiled so that they can use as little of the
+     display as is possible.
+
+`automatic-tiling'
+     When set to `On', creating or deleting a window resizes other
+     windows.  This variable is `Off' by default.  Normally, typing
+     `C-x 2' divides the current window into two equal parts.  When
+     `automatic-tiling' is set to `On', all of the windows are resized
+     automatically, keeping an equal number of lines visible in each
+     window.  There are exceptions to the automatic tiling;
+     specifically, the windows `*Completions*' and `*Footnotes*' are
+     _not_ resized through automatic tiling; they remain their original
+     size.
+
+`visible-bell'
+     When set to `On', GNU Info attempts to flash the screen instead of
+     ringing the bell.  This variable is `Off' by default.  Of course,
+     Info can only flash the screen if the terminal allows it; in the
+     case that the terminal does not allow it, the setting of this
+     variable has no effect.  However, you can make Info perform
+     quietly by setting the `errors-ring-bell' variable to `Off'.
+
+`errors-ring-bell'
+     When set to `On', errors cause the bell to ring.  The default
+     setting of this variable is `On'.
+
+`gc-compressed-files'
+     When set to `On', Info garbage collects files which had to be
+     uncompressed.  The default value of this variable is `Off'.
+     Whenever a node is visited in Info, the Info file containing that
+     node is read into core, and Info reads information about the tags
+     and nodes contained in that file.  Once the tags information is
+     read by Info, it is never forgotten.  However, the actual text of
+     the nodes does not need to remain in core unless a particular Info
+     window needs it.  For non-compressed files, the text of the nodes
+     does not remain in core when it is no longer in use.  But
+     de-compressing a file can be a time consuming operation, and so
+     Info tries hard not to do it twice.  `gc-compressed-files' tells
+     Info it is okay to garbage collect the text of the nodes of a file
+     which was compressed on disk.
+
+`show-index-match'
+     When set to `On', the portion of the matched search string is
+     highlighted in the message which explains where the matched search
+     string was found.  The default value of this variable is `On'.
+     When Info displays the location where an index match was found,
+     (*note `next-index-match': Searching Commands.), the portion of the
+     string that you had typed is highlighted by displaying it in the
+     inverse case from its surrounding characters.
+
+`scroll-behavior'
+     Control what happens when forward scrolling is requested at the
+     end of a node, or when backward scrolling is requested at the
+     beginning of a node.  The default value for this variable is
+     `Continuous'.  There are three possible values for this variable:
+
+    `Continuous'
+          Try to get the first item in this node's menu, or failing
+          that, the `Next' node, or failing that, the `Next' of the
+          `Up'.  This behavior is identical to using the `]'
+          (`global-next-node') and `[' (`global-prev-node') commands.
+
+    `Next Only'
+          Only try to get the `Next' node.
+
+    `Page Only'
+          Simply give up, changing nothing.  If `scroll-behavior' is
+          `Page Only', no scrolling command can change the node that is
+          being viewed.
+
+`scroll-step'
+     The number of lines to scroll when the cursor moves out of the
+     window.  Scrolling happens automatically if the cursor has moved
+     out of the visible portion of the node text when it is time to
+     display.  Usually the scrolling is done so as to put the cursor on
+     the center line of the current window.  However, if the variable
+     `scroll-step' has a nonzero value, Info attempts to scroll the
+     node text by that many lines; if that is enough to bring the
+     cursor back into the window, that is what is done.  The default
+     value of this variable is 0, thus placing the cursor (and the text
+     it is attached to) in the center of the window.  Setting this
+     variable to 1 causes a kind of "smooth scrolling" which some
+     people prefer.
+
+`ISO-Latin'
+     When set to `On', Info accepts and displays ISO Latin characters.
+     By default, Info assumes an ASCII character set.  `ISO-Latin' tells
+     Info that it is running in an environment where the European
+     standard character set is in use, and allows you to input such
+     characters to Info, as well as display them.
+
+
+File: info-stnd.info,  Node: GNU Info Global Index,  Prev: Variables,  Up: Top
+
+Global Index
+************
+
+* Menu:
+
+* ', vi-like operation:                  Node Commands.
+* ,:                                     Searching Commands.
+* -:                                     Miscellaneous Commands.
+* --subnodes, command line option:       Invoking Info.
+* /:                                     Searching Commands.
+* 0 ... 9, vi-like operation:            Miscellaneous Commands.
+* 0, in Info windows:                    Selecting Xrefs.
+* 1 ... 9, in Info windows:              Selecting Xrefs.
+* <:                                     Node Commands.
+* >:                                     Node Commands.
+* ?, in Info windows:                    Miscellaneous Commands.
+* ?, in the echo area:                   The Echo Area.
+* ?, vi-like operation:                  Searching Commands.
+* [:                                     Node Commands.
+* ]:                                     Node Commands.
+* abort-key:                             Miscellaneous Commands.
+* add-digit-to-numeric-arg:              Miscellaneous Commands.
+* Apropos, in Info files:                Invoking Info.
+* arguments, command line:               Invoking Info.
+* arguments, negative:                   Miscellaneous Commands.
+* automatic-footnotes:                   Variables.
+* automatic-tiling:                      Variables.
+* b, in Info windows:                    Cursor Commands.
+* b, vi-like operation:                  Scrolling Commands.
+* BackTab, in Info windows:              Selecting Xrefs.
+* BackTab, in the echo area:             The Echo Area.
+* backward-char:                         Cursor Commands.
+* backward-word:                         Cursor Commands.
+* beginning-of-line:                     Cursor Commands.
+* beginning-of-node:                     Cursor Commands.
+* BS (backspace):                        Scrolling Commands.
+* C-a, in Info windows:                  Cursor Commands.
+* C-a, in the echo area:                 The Echo Area.
+* C-b, in Info windows:                  Cursor Commands.
+* C-b, in the echo area:                 The Echo Area.
+* C-b, vi-like operation:                Scrolling Commands.
+* C-CENTER:                              Node Commands.
+* C-d, in the echo area:                 The Echo Area.
+* C-d, vi-like operation:                Scrolling Commands.
+* C-e, in Info windows:                  Cursor Commands.
+* C-e, in the echo area:                 The Echo Area.
+* C-e, vi-like operation:                Scrolling Commands.
+* C-End:                                 Cursor Commands.
+* C-f, in Info windows:                  Cursor Commands.
+* C-f, in the echo area:                 The Echo Area.
+* C-f, vi-like operation:                Scrolling Commands.
+* C-g, in Info windows:                  Miscellaneous Commands.
+* C-g, in the echo area:                 The Echo Area.
+* C-h:                                   Miscellaneous Commands.
+* C-Home:                                Cursor Commands.
+* C-k, in the echo area:                 The Echo Area.
+* C-k, vi-like operation:                Scrolling Commands.
+* C-l:                                   Scrolling Commands.
+* C-LEFT:                                Cursor Commands.
+* C-LEFT, in the echo area:              The Echo Area.
+* C-n:                                   Cursor Commands.
+* C-n, vi-like operation:                Scrolling Commands.
+* C-NEXT:                                Node Commands.
+* C-p:                                   Cursor Commands.
+* C-p, vi-like operation:                Scrolling Commands.
+* C-PgDn:                                Node Commands.
+* C-PgUp:                                Node Commands.
+* C-PREVIOUS:                            Node Commands.
+* C-q, in the echo area:                 The Echo Area.
+* C-r:                                   Searching Commands.
+* C-RIGHT:                               Cursor Commands.
+* C-RIGHT, in the echo area:             The Echo Area.
+* C-s:                                   Searching Commands.
+* C-t, in the echo area:                 The Echo Area.
+* C-u:                                   Miscellaneous Commands.
+* C-u cancels typeahead, vi-like operation: Miscellaneous Commands.
+* C-u, in the echo area, vi-like operation: The Echo Area.
+* C-u, vi-like operation:                Scrolling Commands.
+* C-UP:                                  Node Commands.
+* C-v:                                   Scrolling Commands.
+* C-v, in the echo area, vi-like operation: The Echo Area.
+* C-w:                                   Scrolling Commands.
+* C-x 0:                                 Basic Windows.
+* C-x 1:                                 Basic Windows.
+* C-x 2:                                 Basic Windows.
+* C-x ^:                                 Basic Windows.
+* C-x b:                                 Node Commands.
+* C-x C-b:                               Node Commands.
+* C-x C-c:                               Miscellaneous Commands.
+* C-x C-f:                               Node Commands.
+* C-x DEL, in the echo area:             The Echo Area.
+* C-x g, vi-like operation:              Node Commands.
+* C-x k:                                 Node Commands.
+* C-x n:                                 Searching Commands.
+* C-x N:                                 Searching Commands.
+* C-x n, vi-like operation:              Node Commands.
+* C-x o:                                 Basic Windows.
+* C-x r, vi-like operation:              Selecting Xrefs.
+* C-x t:                                 Basic Windows.
+* C-x u, vi-like operation:              Node Commands.
+* C-y, in the echo area:                 The Echo Area.
+* C-y, vi-like operation:                Scrolling Commands.
+* cancelling the current operation:      Miscellaneous Commands.
+* cancelling typeahead:                  Miscellaneous Commands.
+* case-sensitive search:                 Searching Commands.
+* case-sensitivity, and search:          Searching Commands.
+* command line options:                  Invoking Info.
+* command-line options, how to find:     Invoking Info.
+* commands, describing:                  Miscellaneous Commands.
+* completion:                            The Echo Area.
+* compressed Info files:                 Invoking Info.
+* cursor, moving:                        Cursor Commands.
+* d:                                     Node Commands.
+* d, vi-like operation:                  Scrolling Commands.
+* DEL, in Info windows:                  Scrolling Commands.
+* DEL, in the echo area:                 The Echo Area.
+* delete-window:                         Basic Windows.
+* describe-command:                      Miscellaneous Commands.
+* describe-key:                          Miscellaneous Commands.
+* describe-variable:                     Variables.
+* dir-node:                              Node Commands.
+* directory path:                        Invoking Info.
+* DOWN (an arrow key):                   Cursor Commands.
+* DOWN, vi-like operation:               Scrolling Commands.
+* down-line:                             Scrolling Commands.
+* e, in Info windows:                    Cursor Commands.
+* echo area:                             The Echo Area.
+* echo-area-abort:                       The Echo Area.
+* echo-area-backward:                    The Echo Area.
+* echo-area-backward-kill-line:          The Echo Area.
+* echo-area-backward-kill-word:          The Echo Area.
+* echo-area-backward-word:               The Echo Area.
+* echo-area-beg-of-line:                 The Echo Area.
+* echo-area-complete:                    The Echo Area.
+* echo-area-delete:                      The Echo Area.
+* echo-area-end-of-line:                 The Echo Area.
+* echo-area-forward:                     The Echo Area.
+* echo-area-forward-word:                The Echo Area.
+* echo-area-insert:                      The Echo Area.
+* echo-area-kill-line:                   The Echo Area.
+* echo-area-kill-word:                   The Echo Area.
+* echo-area-newline:                     The Echo Area.
+* echo-area-possible-completions:        The Echo Area.
+* echo-area-quoted-insert:               The Echo Area.
+* echo-area-rubout:                      The Echo Area.
+* echo-area-scroll-completions-window:   The Echo Area.
+* echo-area-tab-insert:                  The Echo Area.
+* echo-area-transpose-chars:             The Echo Area.
+* echo-area-yank:                        The Echo Area.
+* echo-area-yank-pop:                    The Echo Area.
+* End:                                   Cursor Commands.
+* end-of-line:                           Cursor Commands.
+* end-of-node:                           Cursor Commands.
+* errors-ring-bell:                      Variables.
+* ESC C-f:                               Miscellaneous Commands.
+* ESC C-v, in Info windows:              Basic Windows.
+* ESC C-v, in the echo area:             The Echo Area.
+* f:                                     Selecting Xrefs.
+* f, vi-like operation:                  Scrolling Commands.
+* F1:                                    Miscellaneous Commands.
+* file names, relative:                  Invoking Info.
+* file, outputting to:                   Invoking Info.
+* files, compressed:                     Invoking Info.
+* find-menu:                             Selecting Xrefs.
+* finding the Invocation node:           Node Commands.
+* first-node:                            Node Commands.
+* footnotes, displaying:                 Miscellaneous Commands.
+* forward-char:                          Cursor Commands.
+* forward-word:                          Cursor Commands.
+* functions, describing:                 Miscellaneous Commands.
+* g:                                     Node Commands.
+* G:                                     Node Commands.
+* g, vi-like operation:                  Node Commands.
+* G, vi-like operation:                  Node Commands.
+* gc-compressed-files:                   Variables.
+* get-help-window:                       Miscellaneous Commands.
+* get-info-help-node:                    Miscellaneous Commands.
+* global-next-node:                      Node Commands.
+* global-prev-node:                      Node Commands.
+* goto-invocation:                       Node Commands.
+* goto-node:                             Node Commands.
+* grow-window:                           Basic Windows.
+* h:                                     Miscellaneous Commands.
+* h, vi-like operation:                  Miscellaneous Commands.
+* history-node:                          Node Commands.
+* Home:                                  Cursor Commands.
+* i:                                     Searching Commands.
+* I:                                     Node Commands.
+* incremental search:                    Searching Commands.
+* index search, selecting from the command line: Invoking Info.
+* index, searching:                      Searching Commands.
+* index-search:                          Searching Commands.
+* Info file, selecting:                  Invoking Info.
+* Info files, compressed:                Invoking Info.
+* Info files, relative:                  Invoking Info.
+* Info files, searching all indices:     Invoking Info.
+* INFO_PRINT_COMMAND, environment variable: Printing Nodes.
+* invocation description, how to find:   Invoking Info.
+* invoking info:                         Invoking Info.
+* isearch-backward:                      Searching Commands.
+* isearch-forward:                       Searching Commands.
+* ISO Latin characters:                  Variables.
+* ISO-Latin:                             Variables.
+* k, vi-like operation:                  Scrolling Commands.
+* keep-one-window:                       Basic Windows.
+* keys, describing:                      Miscellaneous Commands.
+* keystrokes, recording:                 Invoking Info.
+* kill-node:                             Node Commands.
+* l:                                     Node Commands.
+* last-menu-item:                        Selecting Xrefs.
+* last-node:                             Node Commands.
+* LEFT (an arrow key):                   Cursor Commands.
+* LEFT, in the echo area:                The Echo Area.
+* Less-like key bindings:                Invoking Info.
+* LFD, vi-like operation:                Scrolling Commands.
+* list-visited-nodes:                    Node Commands.
+* local printer device:                  Printing Nodes.
+* m:                                     Selecting Xrefs.
+* M-$, vi-like operation:                The Echo Area.
+* M--:                                   Miscellaneous Commands.
+* M-0 ... M-9:                           Miscellaneous Commands.
+* M-0, in the echo area, vi-like operation: The Echo Area.
+* M-0, vi-like operation:                Selecting Xrefs.
+* M-1 ... M-9, vi-like operation:        Selecting Xrefs.
+* M-<:                                   Cursor Commands.
+* M->:                                   Cursor Commands.
+* M-b, in Info windows:                  Cursor Commands.
+* M-b, in the echo area:                 The Echo Area.
+* M-b, vi-like operation:                Cursor Commands.
+* M-BS, in the echo area:                The Echo Area.
+* M-d, in the echo area:                 The Echo Area.
+* M-d, vi-like operation:                Node Commands.
+* M-DEL, in the echo area:               The Echo Area.
+* M-f, in Info windows:                  Cursor Commands.
+* M-f, in the echo area:                 The Echo Area.
+* M-f, vi-like operation:                Selecting Xrefs.
+* M-g, vi-like operation:                Selecting Xrefs.
+* M-h, in the echo area, vi-like operation: The Echo Area.
+* M-h, vi-like operation:                Miscellaneous Commands.
+* M-l, in the echo area, vi-like operation: The Echo Area.
+* M-r:                                   Cursor Commands.
+* M-SPC, vi-like operation:              Scrolling Commands.
+* M-t, vi-like operation:                Node Commands.
+* M-TAB, in Info windows:                Selecting Xrefs.
+* M-TAB, in the echo area:               The Echo Area.
+* M-v:                                   Scrolling Commands.
+* M-w, in the echo area, vi-like operation: The Echo Area.
+* M-X, in the echo area, vi-like operation: The Echo Area.
+* M-x, in the echo area, vi-like operation: The Echo Area.
+* M-y, in the echo area:                 The Echo Area.
+* menu, following:                       Invoking Info.
+* menu, following, from inside Info:     Node Commands.
+* menu-digit:                            Selecting Xrefs.
+* menu-item:                             Selecting Xrefs.
+* menu-sequence:                         Node Commands.
+* move-to-next-xref:                     Selecting Xrefs.
+* move-to-prev-xref:                     Selecting Xrefs.
+* move-to-window-line:                   Cursor Commands.
+* moving the cursor:                     Cursor Commands.
+* n:                                     Node Commands.
+* n, vi-like operation:                  Searching Commands.
+* negative arguments:                    Miscellaneous Commands.
+* NEXT:                                  Scrolling Commands.
+* next-index-match:                      Searching Commands.
+* next-line:                             Cursor Commands.
+* next-node:                             Node Commands.
+* next-window:                           Basic Windows.
+* node, selecting from the command line: Invoking Info.
+* nodes, selection of:                   Node Commands.
+* numeric arguments:                     Miscellaneous Commands.
+* numeric arguments, negative:           Miscellaneous Commands.
+* O:                                     Node Commands.
+* online help, using Info as:            Invoking Info.
+* options, command line:                 Invoking Info.
+* outputting to a file:                  Invoking Info.
+* p:                                     Node Commands.
+* PageDown:                              Scrolling Commands.
+* PageUp:                                Scrolling Commands.
+* prev-line:                             Cursor Commands.
+* prev-node:                             Node Commands.
+* prev-window:                           Basic Windows.
+* PREVIOUS:                              Scrolling Commands.
+* print-node:                            Printing Nodes.
+* printing:                              Printing Nodes.
+* printing characters, in the echo area: The Echo Area.
+* printing nodes to the local printer:   Printing Nodes.
+* q:                                     Miscellaneous Commands.
+* quit:                                  Miscellaneous Commands.
+* quitting:                              Miscellaneous Commands.
+* r:                                     Selecting Xrefs.
+* redraw-display:                        Scrolling Commands.
+* relative Info file names:              Invoking Info.
+* remembering user keystrokes:           Invoking Info.
+* repeated search:                       Searching Commands.
+* replaying recorded keystrokes:         Invoking Info.
+* RET, in Info windows:                  Selecting Xrefs.
+* RET, in the echo area:                 The Echo Area.
+* RET, vi-like operation:                Scrolling Commands.
+* RIGHT (an arrow key):                  Cursor Commands.
+* RIGHT, in the echo area:               The Echo Area.
+* s:                                     Searching Commands.
+* S:                                     Searching Commands.
+* screen, changing the height of:        Miscellaneous Commands.
+* scroll-backward:                       Scrolling Commands.
+* scroll-backward-set-window:            Scrolling Commands.
+* scroll-behavior:                       Variables.
+* scroll-forward:                        Scrolling Commands.
+* scroll-forward-set-window:             Scrolling Commands.
+* scroll-half-screen-down:               Scrolling Commands.
+* scroll-half-screen-up:                 Scrolling Commands.
+* scroll-other-window:                   Basic Windows.
+* scroll-step:                           Variables.
+* scrolling:                             Scrolling Commands.
+* scrolling through node structure:      Scrolling Commands.
+* search:                                Searching Commands.
+* search, and case-sensitivity:          Searching Commands.
+* search, case-sensitive:                Searching Commands.
+* search-backward:                       Searching Commands.
+* search-case-sensitively:               Searching Commands.
+* search-next:                           Searching Commands.
+* search-previous:                       Searching Commands.
+* searching:                             Searching Commands.
+* Searching all indices:                 Invoking Info.
+* searching, in the indices:             Searching Commands.
+* select-reference-this-line:            Selecting Xrefs.
+* select-visited-node:                   Node Commands.
+* set-screen-height:                     Miscellaneous Commands.
+* set-variable:                          Variables.
+* Shift-TAB, in Info windows:            Selecting Xrefs.
+* Shift-TAB, in the echo area:           The Echo Area.
+* show-footnotes:                        Miscellaneous Commands.
+* show-index-match:                      Variables.
+* SPC, in Info windows:                  Scrolling Commands.
+* SPC, in the echo area:                 The Echo Area.
+* speech synthesizers:                   Invoking Info.
+* split-window:                          Basic Windows.
+* t:                                     Node Commands.
+* TAB, in Info windows:                  Selecting Xrefs.
+* TAB, in the echo area:                 The Echo Area.
+* tile-windows:                          Basic Windows.
+* tiling:                                Basic Windows.
+* toggle-wrap:                           Scrolling Commands.
+* top-node:                              Node Commands.
+* u:                                     Node Commands.
+* u, vi-like operation:                  Scrolling Commands.
+* universal-argument:                    Miscellaneous Commands.
+* UP (an arrow key):                     Cursor Commands.
+* UP, vi-like operation:                 Scrolling Commands.
+* up-line:                               Scrolling Commands.
+* up-node:                               Node Commands.
+* variables, describing:                 Variables.
+* variables, setting:                    Variables.
+* version information:                   Invoking Info.
+* vi-like key bindings:                  Invoking Info.
+* view-file:                             Node Commands.
+* visible-bell:                          Variables.
+* w, vi-like operation:                  Scrolling Commands.
+* where-is:                              Miscellaneous Commands.
+* windows, creating:                     Basic Windows.
+* windows, deleting:                     Basic Windows.
+* windows, manipulating:                 Window Commands.
+* windows, selecting:                    Basic Windows.
+* xref-item:                             Selecting Xrefs.
+* y, vi-like operation:                  Scrolling Commands.
+* z, vi-like operation:                  Scrolling Commands.
+* ZZ, vi-like operation:                 Miscellaneous Commands.
+
+
